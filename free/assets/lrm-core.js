@@ -420,6 +420,7 @@ console.log('submitted');
 
 							$(".stm-final-submit").click();
 							$(".stm-final-submit").trigger("click");
+							
 							$form.closest(".lrm-user-modal-container").animate({scrollTop: 80}, 400);
 						} else {
 
