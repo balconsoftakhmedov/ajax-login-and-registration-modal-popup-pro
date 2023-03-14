@@ -235,7 +235,7 @@ class LRM_Core {
             return;
         }
 
-        $required_scripts = array('jquery');
+        $required_scripts = array('jquery', 'stm_add_a_car_steps');
 
         // For the Password Reset page
 //        if ( get_the_ID() == LRM_Pages_Manager::get_page_id('restore-password') ) {

@@ -48,21 +48,21 @@ var LRM = LRM ? LRM : {};
 		setTimeout(function () {
 			if (LRM.selectors_mapping.login) {
 				$(LRM.selectors_mapping.login)
-					  .off("click")
-					  .on('click', function (event) {
-						  event.preventDefault();
-						  $(document).trigger('lrm_show_login', [event]);
-						  return false;
-					  });
+					.off("click")
+					.on('click', function (event) {
+						event.preventDefault();
+						$(document).trigger('lrm_show_login', [event]);
+						return false;
+					});
 			}
 			if (LRM.selectors_mapping.register) {
 				$(LRM.selectors_mapping.register)
-					  .off("click")
-					  .on('click', function (event) {
-						  event.preventDefault();
-						  $(document).trigger('lrm_show_signup', [event]);
-						  return false;
-					  });
+					.off("click")
+					.on('click', function (event) {
+						event.preventDefault();
+						$(document).trigger('lrm_show_signup', [event]);
+						return false;
+					});
 			}
 		}, 300);
 
@@ -111,15 +111,15 @@ var LRM = LRM ? LRM : {};
 		//hide or show password
 		$(document).on('click', '.lrm-user-modal-container .hide-password', function () {
 			var togglePass = $(this),
-				  passwordField = togglePass.parent().find('input');
+				passwordField = togglePass.parent().find('input');
 
 			('password' == passwordField.attr('type')) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
 
-			if ( togglePass.hasClass("hide-password--on") )  {
-				togglePass.attr( "title", togglePass.data("show") );
+			if (togglePass.hasClass("hide-password--on")) {
+				togglePass.attr("title", togglePass.data("show"));
 				togglePass.removeClass("hide-password--on");
 			} else {
-				togglePass.attr( "title", togglePass.data("hide") );
+				togglePass.attr("title", togglePass.data("hide"));
 				togglePass.addClass("hide-password--on");
 			}
 			//focus and move cursor to the end of input field
@@ -142,16 +142,16 @@ var LRM = LRM ? LRM : {};
 		var hidden_role = false;
 
 		function _save_auto_role(event) {
-			if ( !event.target || $(event.target).hasClass("lrm-switch-to-link") ) {
-			 	return;
+			if (!event.target || $(event.target).hasClass("lrm-switch-to-link")) {
+				return;
 			}
 			var role = $(event.target).data("lrm-role");
-			if ( role !== undefined ) {
+			if (role !== undefined) {
 				auto_selected_role = role;
 			}
 
 			hidden_role = false;
-			if ( $(event.target).data("lrm-role-silent") !== undefined ) {
+			if ($(event.target).data("lrm-role-silent") !== undefined) {
 				hidden_role = true;
 			}
 		}
@@ -204,8 +204,8 @@ var LRM = LRM ? LRM : {};
 			$formModal.find('.lrm-switcher').children('li').eq(0).children('a').addClass('selected');
 			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').removeClass('selected');
 
-			setTimeout(function() {
-				if ( $(window).width() > 600 ) {
+			setTimeout(function () {
+				if ($(window).width() > 600) {
 					$formModal.find(".lrm-signin-section input[data-autofocus]").focus();
 				}
 			}, 100);
@@ -263,33 +263,33 @@ var LRM = LRM ? LRM : {};
 			$formModal.find('.lrm-switcher').children('li').eq(1).children('a').addClass('selected');
 
 			// User Role selector!
-			if ( $formModal.find(".fieldset--user_role") ) {
+			if ($formModal.find(".fieldset--user_role")) {
 				var $user_role_wrap = $formModal.find(".fieldset--user_role");
 				var $role_option = null, role_id;
 
 				if (auto_selected_role) {
 					$role_option = $user_role_wrap.find("option[data-label='" + auto_selected_role + "']");
-					if ( $role_option.length ) {
+					if ($role_option.length) {
 						var role_id = $role_option.val();
 					}
-					if ( role_id ) {
+					if (role_id) {
 						$user_role_wrap.find("select[name='user_role']").val(role_id); // aa
 					} else {
-						console.warn( "LRM user role selector: no Role was found with a label:", auto_selected_role );
+						console.warn("LRM user role selector: no Role was found with a label:", auto_selected_role);
 					}
 				} else {
 					$user_role_wrap.find("select[name='user_role']").val("");
 				}
 
-				if (hidden_role && ( !auto_selected_role || (auto_selected_role && role_id) )) {
+				if (hidden_role && (!auto_selected_role || (auto_selected_role && role_id))) {
 					$user_role_wrap.hide();
 				} else {
 					$user_role_wrap.show();
 				}
 			}
 
-			setTimeout(function() {
-				if ( $(window).width() > 600 ) {
+			setTimeout(function () {
+				if ($(window).width() > 600) {
 					$formModal.find(".lrm-signup-section input:first").focus();
 				}
 
@@ -324,8 +324,8 @@ var LRM = LRM ? LRM : {};
 			$formModal.find('.lrm-signup-section').removeClass('is-selected');
 			$formModal.find('.lrm-reset-password-section').addClass('is-selected');
 
-			setTimeout(function() {
-				if ( $(window).width() > 600 ) {
+			setTimeout(function () {
+				if ($(window).width() > 600) {
 					$formModal.find(".lrm-reset-password-section input[data-autofocus]").focus();
 				}
 			}, 100);
@@ -345,8 +345,8 @@ var LRM = LRM ? LRM : {};
 		 * @param $formModal
 		 * @private
 		 */
-		function _show_modal( $formModal ) {
-			if ( window.LRM_Pro ) {
+		function _show_modal($formModal) {
+			if (window.LRM_Pro) {
 				window.LRM_Pro.modal_is_shown = true;
 			}
 			$formModal.addClass('is-visible');
@@ -355,9 +355,10 @@ var LRM = LRM ? LRM : {};
 		$(document).on('submit', '.lrm-form', lrm_submit_form);
 
 
-$(".stm-final-submit").on("click", function() {
-console.log('submitted');
-});
+		$(".stm-final-submit").on("click", function (event) {
+			get_add_freight_function(event, true);
+		});
+
 		function lrm_submit_form(event) {
 			if (LRM.is_customize_preview) {
 				alert("Not possible to submit form in Preview Mode!");
@@ -365,18 +366,18 @@ console.log('submitted');
 			}
 			var $form = $(event.target);
 
-			if ( $form.hasClass("rcp_form") ) {
+			if ($form.hasClass("rcp_form")) {
 				return true;
 			}
 
 			event.preventDefault();
 
-			if ( $form.hasClass("--is-submitting") ) {
+			if ($form.hasClass("--is-submitting")) {
 				return false;
 			}
 
 			// Check reCaptha, etc
-			if ( $(document).triggerHandler('lrm/do_not_submit_form', $form) ) {
+			if ($(document).triggerHandler('lrm/do_not_submit_form', $form)) {
 				return false;
 			}
 
@@ -390,7 +391,7 @@ console.log('submitted');
 			}
 
 			$form.find(".has-error").removeClass("has-error")
-				  .next("span").removeClass("is-visible");
+				.next("span").removeClass("is-visible");
 
 			$form.find("button[type='submit']").prepend(loader_html);
 
@@ -409,28 +410,25 @@ console.log('submitted');
 					$form.removeClass("--is-submitting");
 
 					if (response.data.message) {
-						console.log('rrrr');
+						
 						if (!response.data.for) {
-							LRM_Form.set_message( $form, response.data.message, !response.success );
+							LRM_Form.set_message($form, response.data.message, !response.success);
 							//$form.find(".lrm-form-message").html(response.data.message);
 
 							// if (!response.success) {
 							// 	$form.find(".lrm-form-message").addClass("lrm-is-error");
 							// }
 
-							$(".stm-final-submit").click();
 							$(".stm-final-submit").trigger("click");
-							
 							$form.closest(".lrm-user-modal-container").animate({scrollTop: 80}, 400);
 						} else {
-
 							// Tweak in case this selector is Missing
-							if ( 0 === $form.find('input[name="' + response.data.for + '"]').length ) {
+							if (0 === $form.find('input[name="' + response.data.for + '"]').length) {
 								alert(response.data.message);
 							} else {
 
 								$form.find('input[name="' + response.data.for + '"]').addClass('has-error')
-									  .next('.lrm-error-message').html(response.data.message).addClass('is-visible');
+									.next('.lrm-error-message').html(response.data.message).addClass('is-visible');
 								$form.find(".lrm-form-message").removeClass("lrm-is-error").html("");
 
 							}
@@ -444,7 +442,7 @@ console.log('submitted');
 					// $form.data("action") for get
 					$(document).triggerHandler('lrm/ajax_response', [response, $form, $form.data("action")]);
 
-					if ( window.is_lrm_testing ) {
+					if (window.is_lrm_testing) {
 						window.lrm_response = response;
 						return;
 					}
@@ -457,9 +455,9 @@ console.log('submitted');
 						LRM.is_user_logged_in = true;
 						$(document).triggerHandler('lrm_user_logged_in', [response, $form, $form.data("action")]);
 
-						if ( "reload" == response.data.action ) {
-							window.location.reload( true );
-						} else if ( "hide" == response.data.action ) {
+						if ("reload" == response.data.action) {
+							window.location.reload(true);
+						} else if ("hide" == response.data.action) {
 							$(".lrm-user-modal").removeClass('is-visible');
 							$("body").addClass("logged-in");
 						}
@@ -489,18 +487,18 @@ console.log('submitted');
 		/**
 		 * @since 1.51
 		 */
-		$( 'body' ).on( 'keyup', '#lrm-password1,#lrm-password2', function( event ) {
+		$('body').on('keyup', '#lrm-password1,#lrm-password2', function (event) {
 			var passwordStrength = LRM.checkPasswordStrength(
-				  $( "#lrm-password1" ),         // First password field
-				  null,         // First password field
-				  $( "#lrm-password1" ).parent().parent().find(".lrm-pass-strength-result")           // Strength meter
+				$("#lrm-password1"),         // First password field
+				null,         // First password field
+				$("#lrm-password1").parent().parent().find(".lrm-pass-strength-result")           // Strength meter
 			);
 
-			if ( typeof passwordStrength == "undefined" ) {
+			if (typeof passwordStrength == "undefined") {
 				return;
 			}
 
-			if ( !passwordStrength || passwordStrength == 2 ) {
+			if (!passwordStrength || passwordStrength == 2) {
 				$(".pw-weak").show()
 				$(".pw-checkbox").attr("required", "required");
 			} else {
@@ -510,7 +508,7 @@ console.log('submitted');
 		});
 
 		setTimeout(function () {
-			if ( $('#lrm-password1,#lrm-password2').length > 0 ) {
+			if ($('#lrm-password1,#lrm-password2').length > 0) {
 				$('#lrm-password1,#lrm-password2').trigger('keyup');
 			}
 		}, 500);
@@ -558,11 +556,11 @@ console.log('submitted');
 	}
 
 	window.LRM_Form = {
-		set_message: function($form, message_html, is_error) {
+		set_message: function ($form, message_html, is_error) {
 			var $message = $form.find(".lrm-form-message");
 
 			// Tweak in case this selector is Missing
-			if ( 0 !== $message.length ) {
+			if (0 !== $message.length) {
 				$message.html(message_html);
 			} else {
 				alert(message_html);
@@ -576,7 +574,7 @@ console.log('submitted');
 				scrollTop: modal_is_visible ? 25 : $message.offset().top - 15
 			}, 1500);
 
-			if ( is_error ) {
+			if (is_error) {
 				$message.addClass("lrm-is-error");
 			} else {
 				$message.removeClass("lrm-is-error");
@@ -591,12 +589,12 @@ console.log('submitted');
 	 * @param $strengthResult
 	 * @returns {*}
 	 */
-	LRM.checkPasswordStrength = function( $pass1, $pass2, $strengthResult ) {
+	LRM.checkPasswordStrength = function ($pass1, $pass2, $strengthResult) {
 
-		return LRM.loadPasswordMeter(function() {
+		return LRM.loadPasswordMeter(function () {
 			var pass1 = $pass1.val();
-			if ( !pass1 ) {
-				$strengthResult.data('status','empty');
+			if (!pass1) {
+				$strengthResult.data('status', 'empty');
 				return;
 			}
 			if (!$pass2) {
@@ -612,7 +610,7 @@ console.log('submitted');
 
 			// Get the password strength
 			var strength = 0;
-			if ( "lrm" === LRM.password_strength_lib ) {
+			if ("lrm" === LRM.password_strength_lib) {
 				strength = LRM_Helper.PasswordMeter(pass1, blacklistArray, pass2);
 			} else {
 				blacklistArray = blacklistArray.concat(wp.passwordStrength.userInputBlacklist());
@@ -623,25 +621,25 @@ console.log('submitted');
 			switch (strength) {
 
 				case 2:
-					$strengthResult.attr('data-status','bad').html(LRM.l10n.password_is_bad);
+					$strengthResult.attr('data-status', 'bad').html(LRM.l10n.password_is_bad);
 					break;
 
 				case 3:
-					$strengthResult.attr('data-status','good').html(LRM.l10n.password_is_good);
+					$strengthResult.attr('data-status', 'good').html(LRM.l10n.password_is_good);
 					break;
 
 				case 4:
-					$strengthResult.attr('data-status','strong').html(LRM.l10n.password_is_strong);
+					$strengthResult.attr('data-status', 'strong').html(LRM.l10n.password_is_strong);
 					break;
 
 				case 5:
 					if ($pass2) {
-						$strengthResult.attr('data-status','short').html(LRM.l10n.passwords_is_mismatch);
+						$strengthResult.attr('data-status', 'short').html(LRM.l10n.passwords_is_mismatch);
 						break;
 					}
 
 				default:
-					$strengthResult.attr('data-status','short').html(LRM.l10n.password_is_short);
+					$strengthResult.attr('data-status', 'short').html(LRM.l10n.password_is_short);
 
 			}
 
@@ -653,17 +651,35 @@ console.log('submitted');
 
 	LRM.passwordMeterIsLoaded = false;
 	LRM.passwordMeterIsLoading = false;
-	LRM.loadPasswordMeter = function ( callback ) {
-		if ( "lrm" === LRM.password_strength_lib || LRM.passwordMeterIsLoaded ) {
+	LRM.loadPasswordMeter = function (callback) {
+		if ("lrm" === LRM.password_strength_lib || LRM.passwordMeterIsLoaded) {
 			return callback();
 		}
 		// From "wp-admin/js/password-strength-meter.min.js?ver=5.0.4"
-		window.wp=window.wp||{};var passwordStrength;!function(a){wp.passwordStrength={meter:function(b,c,d){if(a.isArray(c)||(c=[c.toString()]),b!=d&&d&&d.length>0)return 5;if("undefined"==typeof window.zxcvbn)return-1;var e=zxcvbn(b,c);return e.score},userInputBlacklist:function(){var b,c,d,e,f=[],g=[],h=["user_login","first_name","last_name","nickname","display_name","email","url","description","weblog_title","admin_email"];for(f.push(document.title),f.push(document.URL),c=h.length,b=0;b<c;b++)e=a("#"+h[b]),0!==e.length&&(f.push(e[0].defaultValue),f.push(e.val()));for(d=f.length,b=0;b<d;b++)f[b]&&(g=g.concat(f[b].replace(/\W/g," ").split(" ")));return g=a.grep(g,function(b,c){return!(""===b||4>b.length)&&a.inArray(b,g)===c})}},passwordStrength=wp.passwordStrength.meter}(jQuery);
+		window.wp = window.wp || {};
+		var passwordStrength;
+		!function (a) {
+			wp.passwordStrength = {
+				meter: function (b, c, d) {
+					if (a.isArray(c) || (c = [c.toString()]), b != d && d && d.length > 0) return 5;
+					if ("undefined" == typeof window.zxcvbn) return -1;
+					var e = zxcvbn(b, c);
+					return e.score
+				}, userInputBlacklist: function () {
+					var b, c, d, e, f = [], g = [], h = ["user_login", "first_name", "last_name", "nickname", "display_name", "email", "url", "description", "weblog_title", "admin_email"];
+					for (f.push(document.title), f.push(document.URL), c = h.length, b = 0; b < c; b++) e = a("#" + h[b]), 0 !== e.length && (f.push(e[0].defaultValue), f.push(e.val()));
+					for (d = f.length, b = 0; b < d; b++) f[b] && (g = g.concat(f[b].replace(/\W/g, " ").split(" ")));
+					return g = a.grep(g, function (b, c) {
+						return !("" === b || 4 > b.length) && a.inArray(b, g) === c
+					})
+				}
+			}, passwordStrength = wp.passwordStrength.meter
+		}(jQuery);
 
 		LRM.passwordMeterIsLoading = true;
 
 		// Usage
-		$.cachedScript( LRM.password_zxcvbn_js_src ).done(function( script, textStatus ) {
+		$.cachedScript(LRM.password_zxcvbn_js_src).done(function (script, textStatus) {
 			LRM.passwordMeterIsLoaded = true;
 			callback();
 		});
@@ -698,9 +714,9 @@ jQuery.fn.putCursorAtEnd = function () {
  * @param options
  * @returns {*}
  */
-jQuery.cachedScript = function( url, options ) {
+jQuery.cachedScript = function (url, options) {
 	// Allow user to set any option except for dataType, cache, and url
-	options = jQuery.extend( options || {}, {
+	options = jQuery.extend(options || {}, {
 		dataType: "script",
 		cache: true,
 		url: url
@@ -708,33 +724,33 @@ jQuery.cachedScript = function( url, options ) {
 
 	// Use $.ajax() since it is more flexible than $.getScript
 	// Return the jqXHR object so we can chain callbacks
-	return jQuery.ajax( options );
+	return jQuery.ajax(options);
 };
 
-var LRM_Helper= {};
+var LRM_Helper = {};
 
-LRM_Helper.setCookie = function(name,value,days) {
+LRM_Helper.setCookie = function (name, value, days) {
 	var expires = "";
 	if (days) {
 		var date = new Date();
-		date.setTime(date.getTime() + (days*24*60*60*1000));
+		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
 		expires = "; expires=" + date.toUTCString();
 	}
-	document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+	document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
-LRM_Helper.getCookie = function(name) {
+LRM_Helper.getCookie = function (name) {
 	var nameEQ = name + "=";
 	var ca = document.cookie.split(';');
-	for(var i=0;i < ca.length;i++) {
+	for (var i = 0; i < ca.length; i++) {
 		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1,c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
 	}
 	return null;
 }
 
-LRM_Helper.PasswordMeter = function( pass1, blacklistArr, pass2 ) {
+LRM_Helper.PasswordMeter = function (pass1, blacklistArr, pass2) {
 
 	function PasswordMeter() {
 
@@ -748,17 +764,17 @@ LRM_Helper.PasswordMeter = function( pass1, blacklistArr, pass2 ) {
 			specialChars: "!&%/()=?^*+][#><;:,._-|"
 		};
 
-		this.letters = this.tokens.letters.split( "" );
-		this.numbers = this.tokens.numbers.split( "" );
-		this.specialChars = this.tokens.specialChars.split( "" );
+		this.letters = this.tokens.letters.split("");
+		this.numbers = this.tokens.numbers.split("");
+		this.specialChars = this.tokens.specialChars.split("");
 
 	}
 
 	PasswordMeter.prototype = {
-		check: function() {
+		check: function () {
 			var self = this;
 
-			if ( self.pass2 && self.pass1 !== self.pass2 ) {
+			if (self.pass2 && self.pass1 !== self.pass2) {
 				return 5;
 			}
 
@@ -769,72 +785,72 @@ LRM_Helper.PasswordMeter = function( pass1, blacklistArr, pass2 ) {
 			var totalNumbers = 0;
 			var totalSpecialChars = 0;
 
-			var tokens = val.split( "" );
+			var tokens = val.split("");
 			var len = tokens.length;
 			var i;
 
-			for( i = 0; i < len; ++i ) {
+			for (i = 0; i < len; ++i) {
 				var token = tokens[i];
-				if( self._isLetter( token ) ) {
+				if (self._isLetter(token)) {
 					totalLetters++;
-				} else if( self._isNumber( token ) ) {
+				} else if (self._isNumber(token)) {
 					totalNumbers++;
-				} else if( self._isSpecialChar( token ) ) {
+				} else if (self._isSpecialChar(token)) {
 					totalSpecialChars++;
 				}
 
 			}
-			
-			var result = self._calculate( total, totalLetters, totalNumbers, totalSpecialChars );
-			return Math.round(result/2.5);
-		},
-		_isLetter: function( token ) {
-			var self = this;
-			if( self.letters.indexOf( token ) == -1 ) {
-				return false;
-			}
-			return true;
-		},
-		_isNumber: function( token ) {
-			var self = this;
-			if( self.numbers.indexOf( token ) == -1 ) {
-				return false;
-			}
-			return true;
-		},
-		_isSpecialChar: function( token ) {
-			var self = this;
-			if( self.specialChars.indexOf( token ) == -1 ) {
-				return false;
-			}
-			return true;
-		},
-		_calculate: function( total, letters, numbers, chars ) {
-			var level = 0;
-			var l = parseInt( letters, 10 );
-			var n = parseInt( numbers, 10 );
-			var c = parseInt( chars, 10 );
 
-			if( total < 8 ) {
+			var result = self._calculate(total, totalLetters, totalNumbers, totalSpecialChars);
+			return Math.round(result / 2.5);
+		},
+		_isLetter: function (token) {
+			var self = this;
+			if (self.letters.indexOf(token) == -1) {
+				return false;
+			}
+			return true;
+		},
+		_isNumber: function (token) {
+			var self = this;
+			if (self.numbers.indexOf(token) == -1) {
+				return false;
+			}
+			return true;
+		},
+		_isSpecialChar: function (token) {
+			var self = this;
+			if (self.specialChars.indexOf(token) == -1) {
+				return false;
+			}
+			return true;
+		},
+		_calculate: function (total, letters, numbers, chars) {
+			var level = 0;
+			var l = parseInt(letters, 10);
+			var n = parseInt(numbers, 10);
+			var c = parseInt(chars, 10);
+
+			if (total < 8) {
 				level += 1;
 			}
-			if( total >= 8 ) {
+			if (total >= 8) {
 				level += 4;
 			}
 
-			if( l > 0 ) {
+			if (l > 0) {
 				level += 1;
 			}
 
-			if( n > 0 ) {
+			if (n > 0) {
 				level += 2;
 			}
 
-			if( c > 0 ) {
+			if (c > 0) {
 				level += 3;
 			}
 
-			if ( jQuery.inArray( pass1, blacklistArr ) > 0 ) {
+			if (jQuery.inArray(pass1, blacklistArr) > 0) {
 				level = 5;
 			}
 
